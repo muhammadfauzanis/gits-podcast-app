@@ -12,6 +12,7 @@ import google.generativeai as genai
 from google.generativeai import GenerativeModel
 import requests
 from pydub import AudioSegment
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
@@ -25,6 +26,14 @@ VOICE_TWO_ID = os.getenv("VOICE_TWO_ID")  # Alif
 # === INIT ===
 genai.configure(api_key=GENAI_API_KEY)
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[os.getenv("CLIENT_URI")],  # Ganti "*" jadi domain frontend kamu jika sudah production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # === FUNCTIONS ===
 def read_pdf_to_text(file_path):
