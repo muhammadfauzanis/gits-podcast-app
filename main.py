@@ -66,6 +66,10 @@ def synthesize_speech(text, voice_id, output_path):
         print(f"Error generating speech: {response.text}")
 
 # === MAIN ENDPOINT ===
+@app.get('/')
+async def hello_world():
+    return 'Hello World'
+
 @app.post("/generate-podcast")
 async def generate_podcast(
     file: Optional[UploadFile] = None,
