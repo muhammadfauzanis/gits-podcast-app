@@ -6,6 +6,7 @@ import json
 import re
 import uuid
 import PyPDF2
+import uvicorn
 from dotenv import load_dotenv
 import google.generativeai as genai
 from google.generativeai import GenerativeModel
@@ -136,3 +137,6 @@ async def generate_podcast(
     podcast.export(output_final_path, format="mp3")
 
     return FileResponse(output_final_path, media_type="audio/mpeg", filename=os.path.basename(output_final_path))
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
