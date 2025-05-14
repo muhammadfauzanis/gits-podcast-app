@@ -20,8 +20,8 @@ load_dotenv()
 GENAI_API_KEY = os.getenv("GENAI_API_KEY")
 ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
 ELEVENLABS_URL = os.getenv("ELEVENLABS_URL")
-VOICE_ONE_ID = os.getenv("VOICE_ONE_ID")  # Nadya
-VOICE_TWO_ID = os.getenv("VOICE_TWO_ID")  # Alif
+VOICE_ONE_ID = os.getenv("VOICE_ONE_ID")  # Cewe
+VOICE_TWO_ID = os.getenv("VOICE_TWO_ID")  # Cowo
 
 # === INIT ===
 genai.configure(api_key=GENAI_API_KEY)
@@ -29,7 +29,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.getenv("CLIENT_URI")],  # Ganti "*" jadi domain frontend kamu jika sudah production
+    allow_origins=[os.getenv("CLIENT_URI")],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
